@@ -1000,10 +1000,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">60</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <longProp name="ThreadGroup.start_time">1375525852000</longProp>
         <longProp name="ThreadGroup.end_time">1375525852000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -1026,9 +1026,9 @@
             <stringProp name="0"></stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="1979166816">
+            <collectionProp name="-1740620711">
               <stringProp name="1538617427">3452344444332</stringProp>
-              <stringProp name="50">2</stringProp>
+              <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
               <stringProp name="66894">CNY</stringProp>
               <stringProp name="3241">en</stringProp>
@@ -1285,7 +1285,7 @@
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="T01 Pay Failed" enabled="false">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="T01 Pay Failed" enabled="true">
           <stringProp name="IfController.condition">&quot;${orderAmount}&quot; == &quot;1&quot; </stringProp>
           <boolProp name="IfController.evaluateAll">true</boolProp>
         </IfController>
@@ -1296,7 +1296,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">seller_email=${seller_email}&amp;extra_common_param=${extra_common_param}&amp;subject=${subject}&amp;sign=${sign}&amp;it_b_pay=${it_b_pay}&amp;notify_url=${notify_url}&amp;payment_type=${payment_type}&amp;out_trade_no=${out_trade_no}&amp;paymethod=${paymethod}&amp;partner=${partner}&amp;service=${service}&amp;total_fee=${total_fee}&amp;sign_type=${sign_type}&amp;seller_id=${seller_id}</stringProp>
+                  <stringProp name="Argument.value">payment_type=${payment_type}&amp;out_trade_no=${out_trade_no}&amp;partner=${partner}&amp;service=${service}&amp;subject=${subject}&amp;total_fee=${total_fee}&amp;sign=${sign}&amp;it_b_pay=${it_b_pay}&amp;notify_url=${notify_url}&amp;sign_type=${sign_type}&amp;seller_id=${seller_id}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -1560,111 +1560,19 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="T03 Refund failed" enabled="false">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="T03 Refund failed" enabled="true">
           <stringProp name="IfController.condition">&quot;${orderAmount}&quot; == &quot;3&quot; </stringProp>
           <boolProp name="IfController.evaluateAll">true</boolProp>
         </IfController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T3 - Mock Pay" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
-                <elementProp name="seller_email" elementType="HTTPArgument">
+                <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${seller_email}</stringProp>
+                  <stringProp name="Argument.value">payment_type=${payment_type}&amp;out_trade_no=${out_trade_no}&amp;partner=${partner}&amp;service=${service}&amp;subject=${subject}&amp;total_fee=${total_fee}&amp;sign=${sign}&amp;it_b_pay=${it_b_pay}&amp;notify_url=${notify_url}&amp;sign_type=${sign_type}&amp;seller_id=${seller_id}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">seller_email</stringProp>
-                </elementProp>
-                <elementProp name="extra_common_param" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${extra_common_param}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">extra_common_param</stringProp>
-                </elementProp>
-                <elementProp name="subject" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${subject}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">subject</stringProp>
-                </elementProp>
-                <elementProp name="sign" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${sign}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">sign</stringProp>
-                </elementProp>
-                <elementProp name="it_b_pay" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${it_b_pay}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">it_b_pay</stringProp>
-                </elementProp>
-                <elementProp name="notify_url" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${notify_url}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">notify_url</stringProp>
-                </elementProp>
-                <elementProp name="payment_type" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${payment_type}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">payment_type</stringProp>
-                </elementProp>
-                <elementProp name="out_trade_no" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${out_trade_no}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">out_trade_no</stringProp>
-                </elementProp>
-                <elementProp name="paymethod" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${paymethod}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">paymethod</stringProp>
-                </elementProp>
-                <elementProp name="partner" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${partner}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">partner</stringProp>
-                </elementProp>
-                <elementProp name="service" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${service}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">service</stringProp>
-                </elementProp>
-                <elementProp name="total_fee" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${total_fee}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">total_fee</stringProp>
-                </elementProp>
-                <elementProp name="sign_type" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${sign_type}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">sign_type</stringProp>
-                </elementProp>
-                <elementProp name="seller_id" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${seller_id}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">seller_id</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
