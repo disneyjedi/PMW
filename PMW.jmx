@@ -467,8 +467,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T1 - Payment Failed Confirm " enabled="true">
@@ -560,8 +560,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T2 - Payment Confirm" enabled="true">
@@ -647,8 +647,8 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T2 - Refund Confirm" enabled="true">
@@ -834,8 +834,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T3 - Payment Confirm" enabled="true">
@@ -868,31 +868,6 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Refund Variables" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="pspName" elementType="Argument">
-                <stringProp name="Argument.name">pspName</stringProp>
-                <stringProp name="Argument.value">ALIPAY</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="source" elementType="Argument">
-                <stringProp name="Argument.name">source</stringProp>
-                <stringProp name="Argument.value">Ticketing System</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="reason" elementType="Argument">
-                <stringProp name="Argument.name">reason</stringProp>
-                <stringProp name="Argument.value">No Reason</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="notifyUrl" elementType="Argument">
-                <stringProp name="Argument.name">notifyUrl</stringProp>
-                <stringProp name="Argument.value">http://10.131.245.229:8080/payment-middleware-psp-alipay-simulator/gateway</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </Arguments>
-          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T3 - Refund Request" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -948,6 +923,10 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T3 - Refund Failed Confirm " enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -1002,7 +981,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <longProp name="ThreadGroup.start_time">1375525852000</longProp>
         <longProp name="ThreadGroup.end_time">1375525852000</longProp>
@@ -1026,9 +1005,9 @@
             <stringProp name="0"></stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-1740620711">
+            <collectionProp name="-1193379078">
               <stringProp name="1538617427">3452344444332</stringProp>
-              <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
+              <stringProp name="51">3</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
               <stringProp name="66894">CNY</stringProp>
               <stringProp name="3241">en</stringProp>
@@ -1336,8 +1315,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T1 - Payment Failed Confirm " enabled="true">
@@ -1429,8 +1408,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T2 - Payment Confirm" enabled="true">
@@ -1516,8 +1495,8 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T2 - Refund Confirm" enabled="true">
@@ -1611,8 +1590,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 1000ms" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T3 - Payment Confirm" enabled="true">
@@ -1645,31 +1624,6 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Refund Variables" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="pspName" elementType="Argument">
-                <stringProp name="Argument.name">pspName</stringProp>
-                <stringProp name="Argument.value">ALIPAY</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="source" elementType="Argument">
-                <stringProp name="Argument.name">source</stringProp>
-                <stringProp name="Argument.value">Ticketing System</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="reason" elementType="Argument">
-                <stringProp name="Argument.name">reason</stringProp>
-                <stringProp name="Argument.value">No Reason</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="notifyUrl" elementType="Argument">
-                <stringProp name="Argument.name">notifyUrl</stringProp>
-                <stringProp name="Argument.value">http://10.131.245.229:8080/payment-middleware-psp-alipay-simulator/gateway</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </Arguments>
-          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T3 - Refund Request" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -1725,6 +1679,10 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay 2000ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T3 - Refund Failed Confirm " enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
