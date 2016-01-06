@@ -37,6 +37,11 @@
             <stringProp name="Argument.value">http://10.131.245.229:8080/payment-middleware-psp-alipay-simulator/gateway</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="SimulatorGateway" elementType="Argument">
+            <stringProp name="Argument.name">SimulatorGateway</stringProp>
+            <stringProp name="Argument.value">http://10.42.47.140:8080/pmw-psp-alipay-sim</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
@@ -62,7 +67,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Latest" enabled="false">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Latest" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="HOST" elementType="Argument">
             <stringProp name="Argument.name">HOST</stringProp>
@@ -102,7 +107,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay between Requests" enabled="false">
+      <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay between Requests" enabled="true">
         <stringProp name="ConstantTimer.delay">300</stringProp>
       </ConstantTimer>
       <hashTree/>
@@ -331,7 +336,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol">${Protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">http://stage.payment-middleware-service.sh1.wdpro.disney.com/payment-middleware-service/order/LODGING/54b62dbf-04f8-4804-9e94-53cf9c8bb9a9/detail</stringProp>
+          <stringProp name="HTTPSampler.path">/payment-middleware-service/payment/ALIPAY?uniquePaymentId=20160105021300000048</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -352,11 +357,11 @@
           <hashTree/>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="1332460055">&quot;state&quot;:&quot;SUCCESS&quot;,&quot;source&quot;</stringProp>
+              <stringProp name="49586">200</stringProp>
             </collectionProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">2</intProp>
+            <intProp name="Assertion.test_type">1</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -365,10 +370,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">10</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">120</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">120</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <longProp name="ThreadGroup.start_time">1375525852000</longProp>
         <longProp name="ThreadGroup.end_time">1375525852000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -411,16 +416,16 @@
             <stringProp name="0"></stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-489259349">
+            <collectionProp name="-1347622662">
               <stringProp name="1538617427">3452344444332</stringProp>
-              <stringProp name="1512341175">${__Random(1,11,)}</stringProp>
+              <stringProp name="50">2</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
               <stringProp name="66894">CNY</stringProp>
               <stringProp name="3241">en</stringProp>
               <stringProp name="-1939843352">PC_WEB</stringProp>
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="3179">cn</stringProp>
-              <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+              <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
               <stringProp name="187832203">${__UUID}</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
@@ -436,11 +441,11 @@
             <stringProp name="-60707634">refundNotifyUrl</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="235030497">
+            <collectionProp name="2008987821">
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="1300511865">Ticketing System</stringProp>
               <stringProp name="1710108035">No Reason</stringProp>
-              <stringProp name="-749659412">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/refund</stringProp>
+              <stringProp name="-984175903">${SimulatorGateway}/refund</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -861,7 +866,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/payment-middleware-psp-alipay-simulator/payment/${orderNo}</stringProp>
+            <stringProp name="HTTPSampler.path">/pmw-psp-alipay-sim/payment/${orderNo}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -927,10 +932,10 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pause 1s" enabled="true">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pause 3s" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">1000</stringProp>
+            <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T2 - Refund Confirm" enabled="true">
@@ -943,7 +948,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/payment-middleware-psp-alipay-simulator/refund/${orderNo}</stringProp>
+            <stringProp name="HTTPSampler.path">/pmw-psp-alipay-sim/refund/${orderNo}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1260,7 +1265,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="T04 Pay Success" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="T04 Pay Success" enabled="false">
           <stringProp name="IfController.condition">&quot;${orderAmount}&quot; &gt; 3</stringProp>
           <boolProp name="IfController.evaluateAll">true</boolProp>
         </IfController>
@@ -1487,7 +1492,7 @@
             <stringProp name="0"></stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="231859726">
+            <collectionProp name="1188981960">
               <stringProp name="1538617427">3452344444332</stringProp>
               <stringProp name="1512341175">${__Random(1,11,)}</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
@@ -1496,7 +1501,7 @@
               <stringProp name="-1634541033">MOBILE_WEB</stringProp>
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="3179">cn</stringProp>
-              <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+              <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
               <stringProp name="187832203">${__UUID}</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
@@ -1512,11 +1517,11 @@
             <stringProp name="-60707634">refundNotifyUrl</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="235030497">
+            <collectionProp name="2008987821">
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="1300511865">Ticketing System</stringProp>
               <stringProp name="1710108035">No Reason</stringProp>
-              <stringProp name="-749659412">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/refund</stringProp>
+              <stringProp name="-984175903">${SimulatorGateway}/refund</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -2363,7 +2368,7 @@
             <stringProp name="0"></stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="1040867980">
+            <collectionProp name="1997990214">
               <stringProp name="1538617427">3452344444332</stringProp>
               <stringProp name="1475711">0.01</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
@@ -2372,7 +2377,7 @@
               <stringProp name="-1939843352">PC_WEB</stringProp>
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="3179">cn</stringProp>
-              <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+              <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
               <stringProp name="187832203">${__UUID}</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
@@ -2388,11 +2393,11 @@
             <stringProp name="-60707634">refundNotifyUrl</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="235030497">
+            <collectionProp name="2008987821">
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="1300511865">Ticketing System</stringProp>
               <stringProp name="1710108035">No Reason</stringProp>
-              <stringProp name="-749659412">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/refund</stringProp>
+              <stringProp name="-984175903">${SimulatorGateway}/refund</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -3052,7 +3057,7 @@
             <stringProp name="0"></stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-899999432">
+            <collectionProp name="57122802">
               <stringProp name="1538617427">3452344444332</stringProp>
               <stringProp name="1475711">0.01</stringProp>
               <stringProp name="251383468">${__V(orderSource_${__Random(1,2,)})}</stringProp>
@@ -3060,7 +3065,7 @@
               <stringProp name="873358032">${__V(payChannel_${__Random(1,2,)})}</stringProp>
               <stringProp name="1094182048">${__V(payOption_${__Random(1,2,)})}</stringProp>
               <stringProp name="3179">cn</stringProp>
-              <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+              <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
               <stringProp name="187832203">${__UUID}</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
@@ -3076,11 +3081,11 @@
             <stringProp name="-60707634">refundNotifyUrl</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="1829967423">
+            <collectionProp name="-691042549">
               <stringProp name="-1941886487">PAYECO</stringProp>
               <stringProp name="1300511865">Ticketing System</stringProp>
               <stringProp name="1710108035">No Reason</stringProp>
-              <stringProp name="-749659412">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/refund</stringProp>
+              <stringProp name="-984175903">${SimulatorGateway}/refund</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -3596,7 +3601,7 @@
             <stringProp name="-1859291417">bankName</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="463242196">
+            <collectionProp name="-196162854">
               <stringProp name="1538617427">3452344444332</stringProp>
               <stringProp name="1475711">0.01</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
@@ -3605,7 +3610,7 @@
               <stringProp name="-1939843352">PC_WEB</stringProp>
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="3179">cn</stringProp>
-              <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+              <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
               <stringProp name="187832203">${__UUID}</stringProp>
               <stringProp name="-23714926">aaa@aa.com</stringProp>
               <stringProp name="-2054162789">1234567890</stringProp>
@@ -3616,7 +3621,7 @@
           <boolProp name="UserParameters.per_iteration">false</boolProp>
         </UserParameters>
         <hashTree/>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T01 agentId,guestEmail,guestMobile,guestSwid" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T01 agentId,guestEmail,guestMobile,guestSwid" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="agentId only" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -3682,7 +3687,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1657130313">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="1255615991">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -3880,7 +3885,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-773956065">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="2126427121">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -4078,7 +4083,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-298556997">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="1311077755">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -4276,7 +4281,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="716000288">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:&quot;${guestSwid}&quot;,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="-148175200">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:&quot;${guestSwid}&quot;,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -4476,7 +4481,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="886270693">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="-985110473">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -4761,7 +4766,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T02 orderNo" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T02 orderNo" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="orderNo Empty" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -4981,7 +4986,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T03 orderAmount" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T03 orderAmount" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="orderAmount empty" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -5433,7 +5438,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T04 orderSource" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T04 orderSource" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="orderSource is TICKETING" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -5495,7 +5500,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="144895118">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;TICKETING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="1237532256">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;TICKETING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -5563,7 +5568,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="988907924">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;LODGING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="44211110">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;LODGING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -5796,7 +5801,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T05 currency" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T05 currency" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="currency is USD" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -6023,7 +6028,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T06 payTtl" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T06 payTtl" enabled="true"/>
         <hashTree>
           <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Set PayTtl = 2" enabled="true">
             <collectionProp name="UserParameters.names">
@@ -6102,7 +6107,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="287736932">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:${payTtl},&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="-1273039178">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:${payTtl},&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6304,7 +6309,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1873095090">1023:pay ttl should be between 2 and 21600</stringProp>
+                <stringProp name="1987637767">1023:pay ttl should be integer and between 2 and 21600</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6380,7 +6385,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1873095090">1023:pay ttl should be between 2 and 21600</stringProp>
+                <stringProp name="1987637767">1023:pay ttl should be integer and between 2 and 21600</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6456,7 +6461,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1873095090">1023:pay ttl should be between 2 and 21600</stringProp>
+                <stringProp name="1987637767">1023:pay ttl should be integer and between 2 and 21600</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6465,7 +6470,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T07 bankName" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T07 bankName" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="bankName is valid" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -6680,7 +6685,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T08 payChannel" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T08 payChannel" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="payChannel is empty" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -6919,7 +6924,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T09 payOption" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T09 payOption" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="payOption is empty" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -7146,7 +7151,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T10 PC_WEB Alipay " enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T10 PC_WEB Alipay " enabled="true"/>
         <hashTree>
           <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Payment Parameters" enabled="true">
             <collectionProp name="UserParameters.names">
@@ -7165,7 +7170,7 @@
               <stringProp name="-888207241">guestSwid</stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="-1500973083">
+              <collectionProp name="-829507553">
                 <stringProp name="1538617427">3452344444332</stringProp>
                 <stringProp name="1475711">0.01</stringProp>
                 <stringProp name="1057493180">LODGING</stringProp>
@@ -7174,7 +7179,7 @@
                 <stringProp name="-1939843352">PC_WEB</stringProp>
                 <stringProp name="1933336138">ALIPAY</stringProp>
                 <stringProp name="3179">cn</stringProp>
-                <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+                <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
                 <stringProp name="187832203">${__UUID}</stringProp>
                 <stringProp name="-23714926">aaa@aa.com</stringProp>
                 <stringProp name="-2054162789">1234567890</stringProp>
@@ -7248,7 +7253,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1657130313">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="1255615991">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7403,7 +7408,7 @@
           </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T11 Mobile_WEB Alipay" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T11 Mobile_WEB Alipay" enabled="true"/>
         <hashTree>
           <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Payment Parameters" enabled="true">
             <collectionProp name="UserParameters.names">
@@ -7422,7 +7427,7 @@
               <stringProp name="-888207241">guestSwid</stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="759512581">
+              <collectionProp name="1430978111">
                 <stringProp name="1538617427">3452344444332</stringProp>
                 <stringProp name="1475711">0.01</stringProp>
                 <stringProp name="1057493180">LODGING</stringProp>
@@ -7431,7 +7436,7 @@
                 <stringProp name="-1634541033">MOBILE_WEB</stringProp>
                 <stringProp name="1933336138">ALIPAY</stringProp>
                 <stringProp name="3179">cn</stringProp>
-                <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+                <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
                 <stringProp name="187832203">${__UUID}</stringProp>
                 <stringProp name="-23714926">aaa@aa.com</stringProp>
                 <stringProp name="-2054162789">1234567890</stringProp>
@@ -7505,7 +7510,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1657130313">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="1255615991">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7642,7 +7647,7 @@
           </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T12 PC_WEB PayEco" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T12 PC_WEB PayEco" enabled="true"/>
         <hashTree>
           <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Payment Parameters" enabled="true">
             <collectionProp name="UserParameters.names">
@@ -7722,7 +7727,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1657130313">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="1255615991">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7731,7 +7736,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T13 MOBILE_WEB PayEco" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="T13 MOBILE_WEB PayEco" enabled="true"/>
         <hashTree>
           <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Payment Parameters" enabled="true">
             <collectionProp name="UserParameters.names">
@@ -7811,7 +7816,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1657130313">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
+                <stringProp name="1255615991">{&quot;sessionDetail&quot;:{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:null,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}},&quot;redirectInfo&quot;:{.*}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7853,7 +7858,7 @@
             <stringProp name="-888207241">guestSwid</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-1500973083">
+            <collectionProp name="-829507553">
               <stringProp name="1538617427">3452344444332</stringProp>
               <stringProp name="1475711">0.01</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
@@ -7862,7 +7867,7 @@
               <stringProp name="-1939843352">PC_WEB</stringProp>
               <stringProp name="1933336138">ALIPAY</stringProp>
               <stringProp name="3179">cn</stringProp>
-              <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+              <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
               <stringProp name="187832203">${__UUID}</stringProp>
               <stringProp name="-23714926">aaa@aa.com</stringProp>
               <stringProp name="-2054162789">1234567890</stringProp>
@@ -7932,7 +7937,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1913581274">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="-378655946">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7998,7 +8003,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1646817506">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="1314403104">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -8064,7 +8069,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="552180010">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="349676474">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -8130,7 +8135,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="738229199">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:&quot;${guestSwid}&quot;,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="-925105889">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:null,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:&quot;${guestSwid}&quot;,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -8198,7 +8203,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1578993508">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="1227234022">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:&quot;${guestMobile}&quot;,&quot;guestEmail&quot;:&quot;${guestEmail}&quot;,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -8485,7 +8490,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1913581274">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="-378655946">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -9076,7 +9081,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-442837939">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;TICKETING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="-487529393">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;TICKETING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -9142,7 +9147,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="915600083">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;LODGING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="-1052954859">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;LODGING&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:30,&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -9661,7 +9666,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="214053795">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:${payTtl},&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;cancelSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;text/plain&quot;},&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
+                <stringProp name="-1149150171">{&quot;sessionInfo&quot;:{&quot;sessionId&quot;:&quot;.*&quot;,&quot;orderNo&quot;:&quot;${orderNo}&quot;,&quot;payUnitId&quot;:&quot;.*&quot;,&quot;orderSource&quot;:&quot;${orderSource}&quot;,&quot;orderAmount&quot;:&quot;${orderAmount}&quot;,&quot;currency&quot;:&quot;${currency}&quot;,&quot;state&quot;:&quot;UNPAID&quot;,&quot;remark&quot;:null,&quot;agentId&quot;:&quot;${agentId}&quot;,&quot;guestMobile&quot;:null,&quot;guestEmail&quot;:null,&quot;guestSwid&quot;:null,&quot;createdDate&quot;:&quot;.*&quot;,&quot;payTtl&quot;:${payTtl},&quot;lastModifiedDate&quot;:&quot;.*&quot;,&quot;notifyUrl&quot;:&quot;${notifyUrl}&quot;,&quot;returnUrl&quot;:null},&quot;links&quot;:{&quot;getSession&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;createTransaction&quot;:{&quot;rel&quot;:&quot;related&quot;,&quot;href&quot;:&quot;.*/payment-middleware-service/session/.*/transactions&quot;,&quot;type&quot;:&quot;application/json&quot;}}}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -9874,7 +9879,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1873095090">1023:pay ttl should be between 2 and 21600</stringProp>
+                <stringProp name="1987637767">1023:pay ttl should be integer and between 2 and 21600</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -9948,7 +9953,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1873095090">1023:pay ttl should be between 2 and 21600</stringProp>
+                <stringProp name="1987637767">1023:pay ttl should be integer and between 2 and 21600</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -10022,7 +10027,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1873095090">1023:pay ttl should be between 2 and 21600</stringProp>
+                <stringProp name="1987637767">1023:pay ttl should be integer and between 2 and 21600</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -10066,7 +10071,7 @@
             <stringProp name="2688338">XCIP</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-785851540">
+            <collectionProp name="247428390">
               <stringProp name="1538617427">3452344444332</stringProp>
               <stringProp name="1475711">0.01</stringProp>
               <stringProp name="1057493180">LODGING</stringProp>
@@ -10075,7 +10080,7 @@
               <stringProp name="-1939843352">PC_WEB</stringProp>
               <stringProp name="278756753">DOMESTIC_CARD</stringProp>
               <stringProp name="3179">cn</stringProp>
-              <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+              <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
               <stringProp name="187832203">${__UUID}</stringProp>
               <stringProp name="-23714926">aaa@aa.com</stringProp>
               <stringProp name="-2054162789">1234567890</stringProp>
@@ -10106,7 +10111,7 @@
               <stringProp name="-888207241">guestSwid</stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="-1500973083">
+              <collectionProp name="-829507553">
                 <stringProp name="1538617427">3452344444332</stringProp>
                 <stringProp name="1475711">0.01</stringProp>
                 <stringProp name="1057493180">LODGING</stringProp>
@@ -10115,7 +10120,7 @@
                 <stringProp name="-1939843352">PC_WEB</stringProp>
                 <stringProp name="1933336138">ALIPAY</stringProp>
                 <stringProp name="3179">cn</stringProp>
-                <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+                <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
                 <stringProp name="187832203">${__UUID}</stringProp>
                 <stringProp name="-23714926">aaa@aa.com</stringProp>
                 <stringProp name="-2054162789">1234567890</stringProp>
@@ -10415,7 +10420,7 @@
               <stringProp name="-888207241">guestSwid</stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="759512581">
+              <collectionProp name="-316977789">
                 <stringProp name="1538617427">3452344444332</stringProp>
                 <stringProp name="1475711">0.01</stringProp>
                 <stringProp name="1057493180">LODGING</stringProp>
@@ -10424,7 +10429,7 @@
                 <stringProp name="-1634541033">MOBILE_WEB</stringProp>
                 <stringProp name="1933336138">ALIPAY</stringProp>
                 <stringProp name="3179">cn</stringProp>
-                <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+                <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
                 <stringProp name="187832203">${__UUID}</stringProp>
                 <stringProp name="-23714926">aaa@aa.com</stringProp>
                 <stringProp name="-2054162789">1234567890</stringProp>
@@ -10700,7 +10705,7 @@
               <stringProp name="0"></stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="-1980705095">
+              <collectionProp name="-1503613513">
                 <stringProp name="1538617427">3452344444332</stringProp>
                 <stringProp name="1475711">0.01</stringProp>
                 <stringProp name="1057493180">LODGING</stringProp>
@@ -10709,7 +10714,7 @@
                 <stringProp name="-1939843352">PC_WEB</stringProp>
                 <stringProp name="610406469">CALLBACK</stringProp>
                 <stringProp name="3179">cn</stringProp>
-                <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+                <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
                 <stringProp name="187832203">${__UUID}</stringProp>
                 <stringProp name="0"></stringProp>
               </collectionProp>
@@ -10869,7 +10874,7 @@
               <stringProp name="0"></stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="-1991760679">
+              <collectionProp name="-1514669097">
                 <stringProp name="1538617427">3452344444332</stringProp>
                 <stringProp name="1475711">0.01</stringProp>
                 <stringProp name="1057493180">LODGING</stringProp>
@@ -10878,7 +10883,7 @@
                 <stringProp name="-1634541033">MOBILE_WEB</stringProp>
                 <stringProp name="610406469">CALLBACK</stringProp>
                 <stringProp name="3179">cn</stringProp>
-                <stringProp name="658138386">http://10.42.47.140:8080/payment-middleware-psp-alipay-simulator/payment</stringProp>
+                <stringProp name="1978061757">${SimulatorGateway}/payment</stringProp>
                 <stringProp name="187832203">${__UUID}</stringProp>
                 <stringProp name="0"></stringProp>
               </collectionProp>
@@ -11841,7 +11846,7 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="T01 Get Pay Options" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Pay Options" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
